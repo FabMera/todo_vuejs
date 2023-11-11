@@ -1,4 +1,6 @@
 <script>
+import Cyclelife from './Cyclelife.vue';
+import Computed from './computed.vue';
 
 export default {
     name: "App",
@@ -38,14 +40,14 @@ export default {
             if (this.tareas[index].estado) {
                 this.eliminarTarea(index);
                 alert("Tarea eliminada");
-            } else {
+            }
+            else {
                 this.completarTarea(index);
             }
         },
     },
+    components: { Computed, Cyclelife }
 };
-
-
 </script>
 
 <template>
@@ -56,6 +58,7 @@ export default {
             type="text"
             class="form-control my-3"
             @keyup.enter="agregarTarea"
+            placeholder="Agregar Tarea"
         />
         <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
 
@@ -78,8 +81,11 @@ export default {
                 </div>
             </div>
         </div>
-        <p v-else class="alert alert-danger text-center w-50 mx-auto">
+        <p  v-else class="alert alert-danger text-center w-50 mx-auto ">
             No hay Tareas!!
         </p>
     </div>
+<hr>
+    <Computed />
+    <Cyclelife />
 </template>
